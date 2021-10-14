@@ -13,8 +13,5 @@ device_id = section:option(Value, "deviceId", "Device ID", "Specify how the devi
 authtoken = section:option(Value, "authtoken", "Authentication token", "Specify the one-time password for the device generated in IBM Cloud IoT service")
 
 authtoken.datatype = "string"
--- function authtoken:validate(value)
---     return value:match("^[^\n ]*$")
--- end
 
 return map
