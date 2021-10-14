@@ -9,7 +9,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/watsond
 	CATEGORY:=Base system
 	TITLE:=watsond
-	DEPENDS:=+libiotp-as-device +libubus +libubox +libblobmsg-json
+	DEPENDS:=+libiotp-as-device +libubus +libubox +libblobmsg-json +libuci
 endef
 
 define Package/watsond/description

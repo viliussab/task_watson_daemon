@@ -1,6 +1,6 @@
 CC:=gcc
 BIN:=watsond
-LDFLAGS:=-liotp-as-device -lblobmsg_json -lubox -lubus
+LDFLAGS:=-liotp-as-device -lblobmsg_json -lubox -lubus -luci
 CPPFLAGS:=-I$(CURDIR)
 SRC:=$(wildcard *.c)
 OBJS:=$(SRC:.c=.o)
