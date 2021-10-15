@@ -26,10 +26,10 @@ reload_service() {
 	start
 }
 
-# service_triggers () {
-#   procd_open_trigger
-#     procd_add_reload_trigger "watsond"
-#     procd_add_config_trigger "config.change" "watsond" /etc/init.d/watsond restart
-#     procd_add_config_trigger "config.change" "/etc/config/watsond" /etc/init.d/watsond restart
-#   procd_close_trigger
-# }
+service_triggers () {
+  procd_open_trigger
+    procd_add_reload_trigger "watsond"
+    procd_add_config_trigger "config.change" "watsond" /etc/init.d/watsond restart
+    procd_add_config_trigger "config.change" "/etc/config/watsond" /etc/init.d/watsond restart
+  procd_close_trigger
+}

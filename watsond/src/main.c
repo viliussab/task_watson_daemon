@@ -133,7 +133,6 @@ int iotp_device_setup(IoTPConfig** out_conf, IoTPDevice** out_dev)
         syslog(LOG_ERR, "Failed to set configuration values: rc=%d\n", rc);
         goto setup_fail;
     }
-     syslog(LOG_INFO, "enable is set, csdfdasf the programsfdfdsfsdsfd");
 
     /* Create IoTPDevice object */
     rc = IoTPDevice_create(out_dev, *out_conf);
@@ -227,8 +226,14 @@ int message_cycle(IoTPDevice** device_ref)
             syslog(LOG_ERR, "Failure to send event. RC from publishEvent(): %d\n", rc);
             break;
         }
-        free(ubus_msg);
-        free(msg_json);
+        if (ubus_msg != NULL) {
+            free(ubus_msg);
+            ubus_msg == NULL;
+        }
+        if (msg_json != NULL) {
+            free(msg_json);
+            msg_json == NULL;
+        }
         sleep(10);
     }
 
@@ -269,7 +274,7 @@ int main(int argc, char *argv[])
     }
 
 clean_iotp:
-    rc = iotp_device_cleanup(config, device);
+    iotp_device_cleanup(config, device);
 clean_general:
     syslog(LOG_INFO, "Program exited with error code %d.\n", rc);
     closelog();
