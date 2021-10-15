@@ -47,7 +47,7 @@ int call_ubus_ports(struct message** out_ptr);
  * Free the memory used in the call_ubus_ports function.
  * Call only once at the end of the program.
  */ 
-void free_ubus(struct message *msg_ptr, char *string_ptr);
+void free_ubus();
 
 int execute_ubus(struct message** out_ptr);
 

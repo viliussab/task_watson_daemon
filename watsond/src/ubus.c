@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 #include "ubus.h"
 
 #define JSON_SIZE 1024
@@ -85,7 +84,6 @@ int start_ubus()
         g_ctx = ubus_connect(NULL);
         is_connected = true;
     }
-
     if (!g_ctx) {
         syslog(LOG_ERR, "Failed to connect to ubus\n");
         return MY_UBUS_CREATION_FAIL;
@@ -111,15 +109,8 @@ int call_ubus_ports(struct message** out_ptr)
     return 0;
 }
 
-void free_ubus(struct message *msg_ptr, char *string_ptr)
+void free_ubus()
 {
-    if (msg_ptr != NULL) {
-        free(msg_ptr);
-    }
-    if (string_ptr != NULL) {
-        free(string_ptr);
-    }
-
     ubus_free(g_ctx);
     is_connected = false;
 }

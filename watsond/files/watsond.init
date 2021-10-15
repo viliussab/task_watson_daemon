@@ -17,6 +17,8 @@ start_service() {
 		procd_set_param command /usr/bin/watsond
 		procd_set_param pidfile /var/run/watsond.pid
 		procd_set_param file /etc/config/watsond
+		procd_set_param stdout 1
+		procd_set_param stderr 1
 		procd_close_instance
 	fi
 }
@@ -25,11 +27,6 @@ reload_service() {
 	stop
 	start
 }
-
-service_triggers () {
-  procd_open_trigger
+service_triggers() {
     procd_add_reload_trigger "watsond"
-    procd_add_config_trigger "config.change" "watsond" /etc/init.d/watsond restart
-    procd_add_config_trigger "config.change" "/etc/config/watsond" /etc/init.d/watsond restart
-  procd_close_trigger
 }
